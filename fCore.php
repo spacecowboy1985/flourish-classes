@@ -441,8 +441,10 @@ class fCore
 			);
 		}
 
-		$uname = php_uname('s');
-
+		//$uname = php_uname('s');
+		// A minor change that get's around the OS not found exception, when running on a host with uname disabled.
+		$uname = strtolower(PHP_OS);
+		
 		if (stripos($uname, 'linux') !== FALSE) {
 			return in_array('linux', $oses);
 
